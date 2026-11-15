@@ -1,0 +1,7 @@
+frontend/app/[...slug]/page.tsx syntax OK
+frontend/app/layout.tsx syntax OK
+frontend/app/page.tsx syntax OK
+frontend/components/netwatch-command-center.tsx syntax OK
+frontend/components/netwatch-prototype-pages.tsx syntax OK
+frontend/lib/netwatch-api.ts syntax OK
+frontend/lib/utils.ts syntax OK

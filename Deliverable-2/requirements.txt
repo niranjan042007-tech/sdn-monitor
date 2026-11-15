@@ -1,0 +1,55 @@
+# =============================================================================
+# SDN Network Monitoring and Alert System — Python dependency manifest
+# =============================================================================
+#
+# TARGET RUNTIME: Ubuntu 26.04.1 LTS (Python 3.14.4 system default)
+#
+# CRITICAL — READ BEFORE INSTALLING:
+# ---------------------------------------------------------------------------
+# The Ryu SDN framework (required by controller/monitoring_controller.py) is
+# INCOMPATIBLE with Python 3.14.  It relies on 'imp' (removed in Python 3.11)
+# and 'distutils' (removed in Python 3.12), and its async core 'eventlet'
+# does not support Python 3.13 or 3.14.
+#
+# See UBUNTU_SETUP.md for the full compatibility analysis and the recommended
+# isolated Python 3.9 venv approach for running ryu-manager.
+#
+# DO NOT run 'pip install -r requirements.txt' with the system python3.14.
+# ---------------------------------------------------------------------------
+#
+# SYSTEM PACKAGES (install with apt, not pip):
+#   sudo apt install mininet openvswitch-switch python3-tk python3-venv
+#
+# =============================================================================
+
+
+# --- Flask web dashboard (dashboard.py) ---
+# Compatible with Python 3.14 system interpreter.
+# Install with: pip install flask
+flask>=3.0.0
+
+
+# --- Ryu SDN controller (controller/monitoring_controller.py) ---
+# MUST be installed inside an isolated Python 3.9 venv.
+# See UBUNTU_SETUP.md for step-by-step instructions.
+#
+# Option A (recommended): community fork patched for Python 3.9+
+#   pip install git+https://github.com/olibrius/ryu4312.git
+#
+# Option B: official PyPI release (Python 3.9 only — do NOT use with 3.10+)
+#   pip install ryu==4.34
+#
+# Pin these supporting packages inside the ryu venv:
+#   pip install eventlet==0.30.2 dnspython>=2.0 setuptools
+#
+# Note: 'ryu' is intentionally NOT listed here as a plain pip requirement
+# because it cannot be installed under the system Python 3.14.
+# ryu==4.34   <-- COMMENTED OUT: incompatible with system Python 3.14
+
+
+# --- All other dependencies (stdlib — no pip install needed) ---
+# agents/telemetry_agent.py:   json, os, socket, sys, time
+# server/monitoring_server.py: json, socket, time, os, collections
+# topo/monitoring_topo.py:     os, socket, threading, json  (+ mininet, system)
+# tests/:                      socket, time, sys, os
+# ui_app.py:                   tkinter (python3-tk), json, os, threading, time
