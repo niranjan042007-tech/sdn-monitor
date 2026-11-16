@@ -3,3 +3,40 @@ __pycache__/
 /evidence/*.log
 /evidence/*.json
 *.zip
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Runtime data and logs
+data/*.db
+*.log
+*.sock
+evidence/*.json
+evidence/*.log
+
+# Backup files
+*.backup
+*.before-*
+
+# Frontend generated files
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/tsconfig.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Runtime alert logs
+*.log

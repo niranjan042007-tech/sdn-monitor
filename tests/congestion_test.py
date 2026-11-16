@@ -20,7 +20,12 @@ while time.time() - t0 < DURATION:
     expected_time = (sent * len(payload) * 8) / (RATE_MBPS * 1e6)
     actual_time = time.time() - t0
     if expected_time > actual_time:
-        time.sleep(expected_time - actual_time)
+        remaining = DURATION - actual_time
+        if remaining <= 0:
+            break
+        sleep_time = min(expected_time - actual_time, remaining)
+        if sleep_time > 0:
+            time.sleep(sleep_time)
         
     if sent % 1000 == 0:
         mbps = sent * 1200 * 8 / (time.time() - t0) / 1e6
