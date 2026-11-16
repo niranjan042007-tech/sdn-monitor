@@ -1,0 +1,25 @@
+Run at 2026-11-15T17:14:44+00:00 - Flask backend running, NO Mininet/Ryu/telemetry (sandbox)
+200  GET /api/status  keys=['alerts', 'countdowns', 'data_stale', 'mitigation_active', 'telemetry', 'telemetry_stale', 'utilization', 'utilization_stale']
+200  GET /api/topology  keys=['description', 'hosts', 'links', 'switches', 'type']
+200  GET /api/network/links  keys=['age_seconds', 'links', 'stale', 'timestamp']
+200  GET /api/network/flows  keys=['age_seconds', 'flows', 'flows_count', 'mitigation_rules', 'stale', 'timestamp', 'top_talkers']
+200  GET /api/history/bottleneck?range=1h  keys=['capacity_mbps', 'end_time', 'link_id', 'point_count', 'points', 'range', 'start_time', 'threshold_pct']
+200  GET /api/history/hosts?range=1h&host=all  keys=['end_time', 'hosts', 'range', 'start_time', 'vm_scope']
+200  GET /api/history/flows/top?range=1h&top=5  keys=['end_time', 'flows_count', 'range', 'start_time', 'top_flows']
+200  GET /api/analytics/summary?range=1h  keys=['end_time', 'metrics', 'range', 'start_time', 'storage']
+200  GET /api/analytics/incidents  keys=['count', 'incidents']
+200  GET /api/analytics/anomalies?limit=20  keys=['anomalies', 'count']
+200  GET /api/experiments/status  keys=['active', 'history', 'source', 'stale']
+200  GET /api/history/bottleneck?range=bogus  keys=['capacity_mbps', 'end_time', 'link_id', 'point_count', 'points', 'range', 'start_time', 'threshold_pct']
+200  GET /api/history/flows/top?top=abc  keys=['end_time', 'flows_count', 'range', 'start_time', 'top_flows']
+400  POST /trigger {"problem": "nope", "host": "h1"} -> {"message":"Unknown problem/experiment: 'nope'. Allowed: flood (or congestion), burst, cpu, mem, kill","status":"error"}
+400  POST /trigger {"problem": "cpu", "host": "h9"} -> {"message":"Invalid host: 'h9'. Allowed: h1, h2, h3, h4","status":"error"}
+400  POST /trigger {"problem": "flood", "host": "h1", "rate": "99"} -> {"message":"Invalid rate/intensity: '99'. Allowed rates for flood: 5, 8, 10","status":"error"}
+503  POST /trigger {"problem": "burst", "host": "h4", "rate": "8"} -> {"message":"Control socket not found \u2014 is the topology running?","status":"error"}
+400  POST /trigger {} -> <!doctype html>
+<html lang=en>
+<title>400 Bad Request</title>
+<h1>Bad Request</h1>
+<p>The browser (or proxy) sent a request that this server could not
+experiments/status body: {"active":null,"history":[],"source":"unavailable","stale":true}
+status: utilization= None utilization_stale= True telemetry= {} data_stale= True

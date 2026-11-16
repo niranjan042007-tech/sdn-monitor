@@ -1,0 +1,13 @@
+[16:05:49] SERVER STARTED
+[16:07:31] SERVER-ALERT: h2 is silent (no telemetry > 5s)
+[16:07:35] SERVER-ALERT: h3 is silent (no telemetry > 5s)
+[16:07:37] SERVER-ALERT: h1 is silent (no telemetry > 5s)
+[16:07:41] SERVER-ALERT: h4 is silent (no telemetry > 5s)
+[16:08:11] SERVER-ALERT: h1 is silent (no telemetry > 5s)
+[16:08:11] SERVER-ALERT: h4 is silent (no telemetry > 5s)
+[16:08:11] SERVER-ALERT: h2 is silent (no telemetry > 5s)
+[16:08:11] SERVER-ALERT: h3 is silent (no telemetry > 5s)
+[16:08:47] SERVER-ALERT: high CPU on h2
+[16:08:52] SERVER-ALERT: h2 is silent (no telemetry > 5s)
+[16:09:41] SERVER-ALERT: high MEM on h3
+[16:09:47] SERVER-ALERT: h3 is silent (no telemetry > 5s)
